@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FPT_Training.Models.Category>
+@{ ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Index</h2>
+
+<!-- Load icon library Search -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- The form Search -->
+<div class="form-group">
+	@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+	{
+		<input type="text" placeholder="Search Categories" name="search">
+		<button type="submit"><i class="fa fa-search"></i></button>}
+</div>
+
+<hr />
+@Html.ActionLink("Create Category", "CreateCategory", "Category", new { @class = "btn btn-primary" })
+<hr />
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Manage</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in @Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Description</td>
+				<td>
+					@Html.ActionLink("Update Category", "UpdateCategory", "Category", new { @Id = item.Id }, new { @class = "btn btn-info" })
+					@Html.ActionLink("Delete Category", "DeleteCategory", "Category", new { @Id = item.Id }, new { @class = "btn btn-danger" })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
