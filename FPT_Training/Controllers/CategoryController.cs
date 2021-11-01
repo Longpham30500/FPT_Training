@@ -44,5 +44,26 @@ namespace FPT_Training.Controllers
       _context.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult UpdateCategory(int Id)
+    {
+      var data = _context.Categories.SingleOrDefault(m => m.Id == Id);
+      return View(data);
+    }
+
+    [HttpPost]
+    public ActionResult UpdateCategory(Category category)
+    {
+      if (ModelState.IsValid)
+      {
+        var isExisted = _context.Categories.SingleOrDefault(m => m.Name == category.Name);
+        if (isExisted != null)
+          return View(category);
+        var data = _context.Categories.SingleOrDefault(m => m.Id == category.Id);
+        data.Name = category.Name;
+        data.Description = category.Description;
+        _context.SaveChanges();
+      }
+      return RedirectToAction("Index");
+    }
   }
 }
