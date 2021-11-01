@@ -65,5 +65,12 @@ namespace FPT_Training.Controllers
       }
       return RedirectToAction("Index");
     }
+    public ActionResult DeleteCategory(int Id)
+    {
+      var data = _context.Categories.SingleOrDefault(m => m.Id == Id);
+      _context.Categories.Remove(data);
+      _context.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
