@@ -1,9 +1,11 @@
 ﻿using FPT_Training.Models;
 using FPT_Training.Utils;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -34,6 +36,44 @@ namespace FPT_Training.Controllers
         {
             var trainer = _context.Users.OfType<Trainer>();
             return View(trainer.ToList());
+        }
+
+        public ActionResult CreateTrainer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateTrainer(RegisterViewModel model, string Specialty)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new Trainer
+                {
+                    UserName = model.FullName,
+                    Email = model.Email,
+                    Age = model.Age,
+                    Address = model.Address,
+                    Specialty = Specialty
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, Role.Trainer);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("TrainerIndex");
+                }
+                AddErrors(result);
+            }
+            return View(model);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }
