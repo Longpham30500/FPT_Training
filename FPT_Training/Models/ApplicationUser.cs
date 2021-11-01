@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,5 +17,11 @@ namespace FPT_Training.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Required]
+        public int Age { get; set; }
+
+        [Required]
+        public string Address { get; set; }
     }
 }
