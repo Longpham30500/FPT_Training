@@ -183,6 +183,10 @@
     <Compile Include="Migrations\202111011536339_Check.Designer.cs">
       <DependentUpon>202111011536339_Check.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.cs" />
+    <Compile Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.Designer.cs">
+      <DependentUpon>202111011656467_AddTrainerPropertyIntoUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -255,6 +259,7 @@
     <Content Include="Views\Category\UpdateCategory.cshtml" />
     <Content Include="Views\Admin\TrainerIndex.cshtml" />
     <Content Include="Views\Admin\CreateTrainer.cshtml" />
+    <Content Include="Views\Admin\UpdateTrainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111011536339_Check.resx">
       <DependentUpon>202111011536339_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.resx">
+      <DependentUpon>202111011656467_AddTrainerPropertyIntoUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
