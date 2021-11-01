@@ -1,4 +1,5 @@
 ﻿using FPT_Training.Models;
+using FPT_Training.Utils;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -29,9 +30,10 @@ namespace FPT_Training.Controllers
             }
         }
 
-        public ActionResult Index()
+        public ActionResult TrainerIndex()
         {
-            return View();
+            var trainer = _context.Users.OfType<Trainer>();
+            return View(trainer.ToList());
         }
     }
 }
