@@ -22,5 +22,27 @@ namespace FPT_Training.Controllers
       }
       return View(data.ToList());
     }
+    public ActionResult CreateCategory()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult CreateCategory(Category category)
+    {
+      if (ModelState.IsValid)
+      {
+        var isExisted = _context.Categories.SingleOrDefault(m => m.Name == category.Name);
+        if (isExisted != null)
+          return View(category);
+        _context.Categories.Add(new Category
+        {
+          Name = category.Name,
+          Description = category.Description
+        });
+      }
+      _context.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

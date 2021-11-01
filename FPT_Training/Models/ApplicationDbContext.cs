@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace FPT_Training.Models
 {
@@ -10,9 +11,9 @@ namespace FPT_Training.Models
         {
         }
 
-		public IEnumerable<Category> Categories { get; internal set; }
+    public DbSet<Category> Categories { get; set; }
 
-		public static ApplicationDbContext Create()
+    public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
