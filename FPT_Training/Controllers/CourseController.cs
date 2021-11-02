@@ -56,6 +56,7 @@ namespace FPT_Training.Controllers
 			_context.SaveChanges();
 			return RedirectToAction("Index");
 		}
+
 		public ActionResult UpdateCourse(int id)
 		{
 			var course = _context.Courses.SingleOrDefault(x => x.Id == id);
@@ -77,6 +78,14 @@ namespace FPT_Training.Controllers
 				return RedirectToAction("Index");
 			}
 			return View(course);
+		}
+
+		public ActionResult DeleteCourse(int CourseId)
+		{
+			var course = _context.Courses.SingleOrDefault(x => x.Id == CourseId);
+			_context.Courses.Remove(course);
+			_context.SaveChanges();
+			return RedirectToAction("Index");
 		}
 	}
 }
