@@ -148,5 +148,34 @@ namespace FPT_Training.Controllers
             }
             return View(model);
         }
+
+        public ActionResult UpdateStaff(string Id)
+        {
+            var userSelected = UserManager.FindById(Id);
+            return View(userSelected);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateStaff(TrainingStaff user, string newPassword = null)
+        {
+            if (ModelState.IsValid)
+            {
+                var editUser = _context.Users.OfType<TrainingStaff>().SingleOrDefault(m => m.Id == user.Id);
+                if (editUser != null)
+                {
+                    editUser.UserName = user.UserName;
+                    editUser.Email = user.Email;
+                    editUser.Age = user.Age;
+                    editUser.Address = user.Address;
+                    if (!String.IsNullOrEmpty(newPassword))
+                    {
+                        var token = UserManager.GeneratePasswordResetToken(user.Id);
+                        UserManager.ResetPassword(user.Id, token, newPassword);
+                    }
+                    _context.SaveChanges();
+                }
+            }
+            return RedirectToAction("TrainingStaffIndex");
+        }
     }
 }

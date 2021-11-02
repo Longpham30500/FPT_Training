@@ -1,12 +1,13 @@
-﻿@model FPT_Training.Models.Trainer
+﻿@model FPT_Training.Models.TrainingStaff
 @{
-    ViewBag.Title = "UpdateTrainer";
+    ViewBag.Title = "Update Training Staff";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UpdateTrainer</h2>
-@using (Html.BeginForm("UpdateTrainer", "Admin", FormMethod.Post))
+
+@using (Html.BeginForm("UpdateTrainingStaff", "Admin", FormMethod.Post))
 {
+
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(m => m.Id)
     <div class="form-group">
@@ -32,17 +33,9 @@
     </div>
 
     <div class="form-group">
-        <label>Education</label>
-        @Html.TextBoxFor(m => m.Specialty, "", new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
         <label>Password</label>
-        <div class="from-group">
-            @Html.Password("newPassword", "", new { @class = "form-control" })
-        </div>
+        @Html.Password("newPassword", "", new { @class = "form-control" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Update Trainer</button>
+    <button type="submit" class="btn btn-primary">Edit a Training Staff User</button>
 }
-
