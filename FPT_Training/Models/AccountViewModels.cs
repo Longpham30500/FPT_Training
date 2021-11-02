@@ -65,6 +65,12 @@ namespace FPT_Training.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "FullName")]
+        public string FullName { get; set; }
+        public int Age { get; set; }
+        public string Address { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

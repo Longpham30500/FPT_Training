@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -178,6 +179,14 @@
     <Compile Include="Migrations\202111011130056_CreateTableCategory.Designer.cs">
       <DependentUpon>202111011130056_CreateTableCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111011536339_Check.cs" />
+    <Compile Include="Migrations\202111011536339_Check.Designer.cs">
+      <DependentUpon>202111011536339_Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.cs" />
+    <Compile Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.Designer.cs">
+      <DependentUpon>202111011656467_AddTrainerPropertyIntoUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -185,8 +194,10 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Trainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\Role.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -247,6 +258,9 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\CreateCategory.cshtml" />
     <Content Include="Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Views\Admin\TrainerIndex.cshtml" />
+    <Content Include="Views\Admin\CreateTrainer.cshtml" />
+    <Content Include="Views\Admin\UpdateTrainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +281,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111011130056_CreateTableCategory.resx">
       <DependentUpon>202111011130056_CreateTableCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011536339_Check.resx">
+      <DependentUpon>202111011536339_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.resx">
+      <DependentUpon>202111011656467_AddTrainerPropertyIntoUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

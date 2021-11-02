@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FPT_Training.Models.Trainer>
+@{
+    ViewBag.Title = "TrainerIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Specialty</th>
+            <th scope="col">Manage</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Specialty</td>
+                <td>
+                    @Html.ActionLink("Update Trainer", "UpdateTrainer", "Admin", new { Id = item.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete Trainer", "DeleteUser", "Admin", new { Id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

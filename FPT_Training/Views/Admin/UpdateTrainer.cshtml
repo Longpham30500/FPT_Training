@@ -1,0 +1,48 @@
+﻿@model FPT_Training.Models.Trainer
+@{
+    ViewBag.Title = "UpdateTrainer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UpdateTrainer</h2>
+@using (Html.BeginForm("UpdateTrainer", "Admin", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        <label>UserName</label>
+        @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label>Age</label>
+        @Html.TextBoxFor(m => m.Age, "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBoxFor(m => m.Email, "", new { placeholder = "include @fpt.edu.vn", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label>Andress</label>
+        @Html.TextBoxFor(m => m.Address, "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Education</label>
+        @Html.TextBoxFor(m => m.Specialty, "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <div class="from-group">
+            @Html.Password("newPassword", "", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Trainer</button>
+}
+
