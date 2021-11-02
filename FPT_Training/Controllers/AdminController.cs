@@ -135,7 +135,7 @@ namespace FPT_Training.Controllers
                 {
                     await UserManager.AddToRoleAsync(user.Id, Role.TrainingStaff);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("TrainingStaffIndex");
+                    return RedirectToAction("StaffIndex");
                 }
                 AddErrors(result);
             }
@@ -168,7 +168,7 @@ namespace FPT_Training.Controllers
                     _context.SaveChanges();
                 }
             }
-            return RedirectToAction("TrainingStaffIndex");
+            return RedirectToAction("StaffIndex");
         }
 
         public ActionResult DeleteUser(string Id)
