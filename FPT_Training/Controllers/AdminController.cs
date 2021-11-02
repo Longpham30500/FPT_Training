@@ -105,5 +105,12 @@ namespace FPT_Training.Controllers
             }
             return RedirectToAction("TrainerIndex");
         }
+
+        public ActionResult DeleteUser(string Id)
+        {
+            var user = UserManager.FindById(Id);
+            UserManager.Delete(user);
+            return RedirectToAction("TrainerIndex");
+        }
     }
 }
