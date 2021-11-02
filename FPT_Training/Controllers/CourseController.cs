@@ -56,5 +56,27 @@ namespace FPT_Training.Controllers
 			_context.SaveChanges();
 			return RedirectToAction("Index");
 		}
+		public ActionResult UpdateCourse(int id)
+		{
+			var course = _context.Courses.SingleOrDefault(x => x.Id == id);
+			return View(course);
+		}
+
+		[HttpPost]
+		public ActionResult UpdateCourse(Course course)
+		{
+			if (ModelState.IsValid)
+			{
+				var isExisted = _context.Courses.SingleOrDefault(m => m.CourseName == course.CourseName);
+				if (isExisted != null)
+					return View(course);
+				var oldCourse = _context.Courses.SingleOrDefault(x => x.Id == course.Id);
+				oldCourse.CourseName = course.CourseName;
+				oldCourse.Description = course.Description;
+				_context.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View(course);
+		}
 	}
 }
