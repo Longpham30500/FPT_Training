@@ -112,5 +112,11 @@ namespace FPT_Training.Controllers
             UserManager.Delete(user);
             return RedirectToAction("TrainerIndex");
         }
+
+        public ActionResult TrainingStaffIndex()
+        {
+            var newView = _context.Users.OfType<TrainingStaff>().ToList();
+            return View(newView);
+        }
     }
 }
