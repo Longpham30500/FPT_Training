@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("UpdateTrainee", "TrainingStaff", FormMethod.Post))
+@using (Html.BeginForm("UpdateTrainee", "Staff", FormMethod.Post))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(m => m.Id)
