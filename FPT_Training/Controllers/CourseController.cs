@@ -68,7 +68,7 @@ namespace FPT_Training.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var isExisted = _context.Courses.SingleOrDefault(m => m.CourseName == course.CourseName);
+				var isExisted = _context.Courses.SingleOrDefault(m => m.CourseName == course.CourseName && m.Id != course.Id);
 				if (isExisted != null)
 					return View(course);
 				var oldCourse = _context.Courses.SingleOrDefault(x => x.Id == course.Id);

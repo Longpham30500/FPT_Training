@@ -55,7 +55,7 @@ namespace FPT_Training.Controllers
     {
       if (ModelState.IsValid)
       {
-        var isExisted = _context.Categories.SingleOrDefault(m => m.Name == category.Name);
+        var isExisted = _context.Categories.SingleOrDefault(m => m.Name == category.Name && m.Id != category.Id);
         if (isExisted != null)
           return View(category);
         var data = _context.Categories.SingleOrDefault(m => m.Id == category.Id);
