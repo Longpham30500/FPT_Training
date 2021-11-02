@@ -52,7 +52,7 @@ else
 	</td>
 	<td>
 		@Html.ActionLink("Update Trainee", "UpdateTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-info" })
-		@Html.ActionLink("Delete Trainee", "DeleteUser", "Admin", new { Id = item.user.Id }, new { @class = "btn btn-danger" })
+		@Html.ActionLink("Delete Trainee", "DeleteTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-danger" })
 		@Html.ActionLink("Assign Courses", "ViewAssignCourseForTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-success" })
 	</td>
 </tr>

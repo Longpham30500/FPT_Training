@@ -122,5 +122,12 @@ namespace FPT_Training.Controllers
       }
       return RedirectToAction("TraineeIndex");
     }
+    public ActionResult DeleteTrainee(string Id)
+    {
+      var data = _context.Users.SingleOrDefault(m => m.Id == Id);
+      _context.Users.Remove(data);
+      _context.SaveChanges();
+      return RedirectToAction("TraineeIndex");
+    }
   }
 }
