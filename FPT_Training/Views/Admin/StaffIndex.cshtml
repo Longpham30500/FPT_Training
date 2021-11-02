@@ -4,7 +4,7 @@
 }
 
 <hr />
-@Html.ActionLink("Create Training Staff User", "CreateTrainingStaff", "Admin", new { @class = "btn btn-primary" })
+@Html.ActionLink("Create Training Staff User", "CreateStaff", "Admin", new { @class = "btn btn-primary" })
 <hr />
 
 <table class="table table-striped">
@@ -22,7 +22,7 @@
                 <td>@item.UserName</td>
                 <td>@item.Age</td>
                 <td>
-                    @Html.ActionLink("Update Training Staff", "UpdateTrainingStaff", "Admin", new { Id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Update Training Staff", "UpdateStaff", "Admin", new { Id = item.Id }, new { @class = "btn btn-info" })
                     @Html.ActionLink("Delete Training Staff", "DeleteUser", "Admin", new { Id = item.Id }, new { @class = "btn btn-warning" })
                 </td>
             </tr>

@@ -113,10 +113,40 @@ namespace FPT_Training.Controllers
             return RedirectToAction("TrainerIndex");
         }
 
-        public ActionResult TrainingStaffIndex()
+        public ActionResult StaffIndex()
         {
             var newView = _context.Users.OfType<TrainingStaff>().ToList();
             return View(newView);
+        }
+
+        public ActionResult CreateStaff()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateStaff(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new TrainingStaff
+                {
+                    UserName = model.FullName,
+                    Email = model.Email,
+                    Age = model.Age,
+                    Address = model.Address,
+                    isTrainingStaff = true
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, Role.TrainingStaff);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("TrainingStaffIndex");
+                }
+                AddErrors(result);
+            }
+            return View(model);
         }
     }
 }
