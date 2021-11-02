@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FPT_Training.Models.TrainingStaff>
+@{
+    ViewBag.Title = "TrainingStaffIndex";
+}
+
+<h2>Index</h2>
+<hr />
+@Html.ActionLink("Create Training Staff User", "CreateStaff", "Admin", new { @class = "btn btn-primary" })
+<hr />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Manage Training Staff User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Age</td>
+                <td>
+                    @Html.ActionLink("Update Training Staff", "UpdateStaff", "Admin", new { Id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete Training Staff", "DeleteUser", "Admin", new { Id = item.Id }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

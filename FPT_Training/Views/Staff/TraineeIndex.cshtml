@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<FPT_Training.ViewModels.UserCoursesModel>
 @{ ViewBag.Title = "Trainee Index";
-	Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h2>Index</h2>
 
@@ -9,10 +9,10 @@
 
 <!-- The form Search -->
 <div class="form-group">
-	@using (Html.BeginForm("TraineeIndex", "Staff", FormMethod.Get))
-	{
-<input type="text" placeholder="Search Trainee name, age, course" name="search">
-				<button type="submit"><i class="fa fa-search"></i></button>}
+    @using (Html.BeginForm("TraineeIndex", "Staff", FormMethod.Get))
+    {
+        <input type="text" placeholder="Search Trainee name, age, course" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>}
 </div>
 
 
@@ -20,43 +20,43 @@
 
 
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">Age</th>
-			<th scope="col">Courses</th>
-			<th scope="col">Manage User</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in @Model)
-		{
-<tr>
-	<td>@item.user.UserName</td>
-	<td>@item.user.Age</td>
-	<td>
-		@if (item.courses.Count() == 1)
-		{
-<label>@item.courses[0].CourseName</label> }
-else
-{
-<ul>
-	@foreach (var course in item.courses)
-	{
-		if (course.CourseName != "Not Exist")
-		{
-<li>@course.CourseName</li>
-							@Html.ActionLink("Remove Courses", "RemoveCourseForTrainee", "Staff", new { Id = item.user.Id, courseId = course.Id }, new { @class = "btn btn-success" })}
-					}
-</ul>}
-	</td>
-	<td>
-		@Html.ActionLink("Update Trainee", "UpdateTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-info" })
-		@Html.ActionLink("Delete Trainee", "DeleteTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-danger" })
-		@Html.ActionLink("Assign Courses", "ViewAssignCourseForTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-success" })
-	</td>
-</tr>
-}
-	</tbody>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Courses</th>
+            <th scope="col">Manage User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>@item.user.UserName</td>
+                <td>@item.user.Age</td>
+                <td>
+                    @if (item.courses.Count() == 1)
+                    {
+                        <label>@item.courses[0].CourseName</label> }
+                    else
+                    {
+                        <ul>
+                            @foreach (var course in item.courses)
+                            {
+                                if (course.CourseName != "Not Exist")
+                                {
+                                    <li>@course.CourseName</li>
+                                    @Html.ActionLink("Remove Courses", "RemoveCourseForTrainee", "Staff", new { Id = item.user.Id, courseId = course.Id }, new { @class = "btn btn-success" })}
+                            }
+                        </ul>}
+                </td>
+                <td>
+                    @Html.ActionLink("Update Trainee", "UpdateTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete Trainee", "DeleteTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Assign Courses", "ViewAssignCourseForTrainee", "Staff", new { Id = item.user.Id }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 

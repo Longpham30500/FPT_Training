@@ -8,41 +8,42 @@
 
 <!-- The form Search -->
 <div class="form-group">
-	@using (Html.BeginForm("Index", "Course", FormMethod.Get))
-	{
-<input type="text" placeholder="Search Course such as Course Name and category" name="search">
-				<button type="submit"><i class="fa fa-search"></i></button>}
+    @using (Html.BeginForm("Index", "Course", FormMethod.Get))
+    {
+        <input type="text" placeholder="Search Course such as Course Name and category" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>}
 </div>
 
 
 <div class="form-group">
-	@Html.ActionLink("Create Course", "CreateCourse", "Course", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create Course", "CreateCourse", "Course", new { @class = "btn btn-primary" })
 </div>
 
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">Description</th>
-			<th scope="col">Categories</th>
-			<th scope="col">Manage Course</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
-		{
-			if (item.CourseName != "Not Exist")
-			{
-<tr>
-	<td>@item.CourseName</td>
-	<td>@item.Description</td>
-	<td>@item.Category.Name</td>
-	<td>
-		@Html.ActionLink("Update Course", "UpdateCourse", "Course", new { id = item.Id }, new { @class = "btn btn-info" })
-		@Html.ActionLink("Delete Course", "DeleteCourse", "Course", new { @CourseId = item.Id }, new { @class = "btn btn-danger" })
-	</td>
-</tr>}
-			}
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Categories</th>
+            <th scope="col">Manage Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.CourseName != "Not Exist")
+            {
+                <tr>
+                    <td>@item.CourseName</td>
+                    <td>@item.Description</td>
+                    <td>@item.Category.Name</td>
+                    <td>
+                        @Html.ActionLink("Update Course", "UpdateCourse", "Course", new { id = item.Id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Delete Course", "DeleteCourse", "Course", new { @CourseId = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        }
 
-	</tbody>
+    </tbody>
 </table>

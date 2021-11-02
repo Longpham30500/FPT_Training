@@ -105,5 +105,82 @@ namespace FPT_Training.Controllers
             }
             return RedirectToAction("TrainerIndex");
         }
+
+        public ActionResult StaffIndex()
+        {
+            var newView = _context.Users.OfType<TrainingStaff>().ToList();
+            return View(newView);
+        }
+
+        public ActionResult CreateStaff()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateStaff(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new TrainingStaff
+                {
+                    UserName = model.FullName,
+                    Email = model.Email,
+                    Age = model.Age,
+                    Address = model.Address,
+                    isTrainingStaff = true
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, Role.TrainingStaff);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("StaffIndex");
+                }
+                AddErrors(result);
+            }
+            return View(model);
+        }
+
+        public ActionResult UpdateStaff(string Id)
+        {
+            var userSelected = UserManager.FindById(Id);
+            return View(userSelected);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateStaff(TrainingStaff user, string newPassword = null)
+        {
+            if (ModelState.IsValid)
+            {
+                var editUser = _context.Users.OfType<TrainingStaff>().SingleOrDefault(m => m.Id == user.Id);
+                if (editUser != null)
+                {
+                    editUser.UserName = user.UserName;
+                    editUser.Email = user.Email;
+                    editUser.Age = user.Age;
+                    editUser.Address = user.Address;
+                    if (!String.IsNullOrEmpty(newPassword))
+                    {
+                        var token = UserManager.GeneratePasswordResetToken(user.Id);
+                        UserManager.ResetPassword(user.Id, token, newPassword);
+                    }
+                    _context.SaveChanges();
+                }
+            }
+            return RedirectToAction("StaffIndex");
+        }
+
+        public ActionResult DeleteUser(string Id)
+        {
+            var user = UserManager.FindById(Id);
+            if(user is Trainer)
+            {
+                UserManager.Delete(user);
+                return RedirectToAction("TrainerIndex");
+            }    
+            UserManager.Delete(user);
+            return RedirectToAction("StaffIndex");
+        }
     }
 }
