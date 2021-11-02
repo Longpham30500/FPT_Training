@@ -139,30 +139,30 @@ namespace FPT_Training.Controllers
             return View(view);
         }
 
-    public ActionResult AssignCourseForTrainee(string Id, int courseId)
-    {
-      var course = _context.Courses.SingleOrDefault(m => m.Id == courseId);
-      var user = _context.Users.SingleOrDefault(m => m.Id == Id);
-      var check = _context.UsersCourses.SingleOrDefault(m => m.UserId == Id && m.CourseId == courseId);
-      if (check == null)
-      {
-        var data = new UserCourse
+        public ActionResult AssignCourseForTrainee(string Id, int courseId)
         {
-          UserId = Id,
-          CourseId = courseId
-        };
-        _context.UsersCourses.Add(data);
-        _context.SaveChanges();
-      }
-      return RedirectToAction("TraineeIndex");
-    }
+            var course = _context.Courses.SingleOrDefault(m => m.Id == courseId);
+            var user = _context.Users.SingleOrDefault(m => m.Id == Id);
+            var check = _context.UsersCourses.SingleOrDefault(m => m.UserId == Id && m.CourseId == courseId);
+            if (check == null)
+            {
+                var data = new UserCourse
+                {
+                    UserId = Id,
+                    CourseId = courseId
+                };
+                _context.UsersCourses.Add(data);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("TraineeIndex");
+        }
 
-    public ActionResult RemoveCourseForTrainee(string Id, int courseId)
-    {
-      var data = _context.UsersCourses.SingleOrDefault(m => m.CourseId == courseId && m.UserId == Id);
-      _context.UsersCourses.Remove(data);
-      _context.SaveChanges();
-      return RedirectToAction("TraineeIndex");
+        public ActionResult RemoveCourseForTrainee(string Id, int courseId)
+        {
+            var data = _context.UsersCourses.SingleOrDefault(m => m.CourseId == courseId && m.UserId == Id);
+            _context.UsersCourses.Remove(data);
+            _context.SaveChanges();
+            return RedirectToAction("TraineeIndex");
+        }
     }
-  }
 }
