@@ -1,9 +1,12 @@
 ﻿using FPT_Training.Models;
+using FPT_Training.Utils;
 using FPT_Training.ViewModels;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -50,6 +53,49 @@ namespace FPT_Training.Controllers
                         || m.user.Age.ToString().Contains(search));
       }
       return View(view.ToList());
+    }
+
+    public ActionResult CreateTrainee()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> CreateTrainee(RegisterViewModel model, string Education)
+    {
+      if (ModelState.IsValid)
+      {
+        var user = new Trainee
+        {
+          UserName = model.FullName,
+          Email = model.Email,
+          Age = model.Age,
+          Address = model.Address,
+          Education = Education
+        };
+        var result = await UserManager.CreateAsync(user, model.Password);
+        if (result.Succeeded)
+        {
+          _context.UsersCourses.Add(new UserCourse
+          {
+            CourseId = _context.Courses.SingleOrDefault(m => m.CourseName == "Not Exist").Id,
+            UserId = user.Id
+          });
+          await UserManager.AddToRoleAsync(user.Id, Role.Trainee);
+          await _context.SaveChangesAsync();
+          return RedirectToAction("TraineeIndex");
+        }
+        AddErrors(result);
+      }
+      return View(model);
+    }
+
+    private void AddErrors(IdentityResult result)
+    {
+      foreach (var error in result.Errors)
+      {
+        ModelState.AddModelError("", error);
+      }
     }
   }
 }
