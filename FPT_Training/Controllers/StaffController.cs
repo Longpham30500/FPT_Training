@@ -97,5 +97,30 @@ namespace FPT_Training.Controllers
         ModelState.AddModelError("", error);
       }
     }
+
+    public ActionResult UpdateTrainee(string Id)
+    {
+      var userSelected = UserManager.FindById(Id);
+      return View(userSelected);
+    }
+
+    [HttpPost]
+    public ActionResult UpdateTrainee(Trainee user)
+    {
+      if (ModelState.IsValid)
+      {
+        var editUser = _context.Users.OfType<Trainee>().SingleOrDefault(m => m.Id == user.Id);
+        if (editUser != null)
+        {
+          editUser.UserName = user.UserName;
+          editUser.Email = user.Email;
+          editUser.Age = user.Age;
+          editUser.Address = user.Address;
+          editUser.Education = user.Education;
+          _context.SaveChanges();
+        }
+      }
+      return RedirectToAction("TraineeIndex");
+    }
   }
 }
