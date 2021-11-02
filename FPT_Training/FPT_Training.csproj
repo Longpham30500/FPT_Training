@@ -187,6 +187,10 @@
     <Compile Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.Designer.cs">
       <DependentUpon>202111011656467_AddTrainerPropertyIntoUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111020727103_CreateTableCourse.cs" />
+    <Compile Include="Migrations\202111020727103_CreateTableCourse.Designer.cs">
+      <DependentUpon>202111020727103_CreateTableCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -287,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111011656467_AddTrainerPropertyIntoUser.resx">
       <DependentUpon>202111011656467_AddTrainerPropertyIntoUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111020727103_CreateTableCourse.resx">
+      <DependentUpon>202111020727103_CreateTableCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
