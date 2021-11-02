@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,6 +193,10 @@
     <Compile Include="Migrations\202111020727103_CreateTableCourse.Designer.cs">
       <DependentUpon>202111020727103_CreateTableCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111020810462_AddTraineePropertiesForApplicationUser.cs" />
+    <Compile Include="Migrations\202111020810462_AddTraineePropertiesForApplicationUser.Designer.cs">
+      <DependentUpon>202111020810462_AddTraineePropertiesForApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -199,6 +204,7 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Trainee.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -273,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -299,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111020727103_CreateTableCourse.resx">
       <DependentUpon>202111020727103_CreateTableCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111020810462_AddTraineePropertiesForApplicationUser.resx">
+      <DependentUpon>202111020810462_AddTraineePropertiesForApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
