@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FPT_Training.Models
 {
-	public class Trainee
+	public class Trainee : ApplicationUser
 	{
 		[MaxLength(50)]
 		public string Education { get; set; }
