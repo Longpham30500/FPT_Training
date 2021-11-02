@@ -12,8 +12,11 @@ namespace FPT_Training.Models
         }
 
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<UserCourse> UsersCourses { get; set; }
 
-        public static ApplicationDbContext Create()
+
+    public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }

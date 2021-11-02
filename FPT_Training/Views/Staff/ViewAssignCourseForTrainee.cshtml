@@ -1,0 +1,29 @@
+﻿@model FPT_Training.ViewModels.AssignCourse
+@{ Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "ViewAssignCourseForTrainee"; }
+
+<h2>ViewAssignCourseForTrainee</h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in @Model.courses)
+		{
+			if (item.CourseName != "Not Exist")
+			{
+<tr>
+	<td>@item.CourseName</td>
+	<td>@item.Description</td>
+	<td>
+		@Html.ActionLink("Assign", "AssignCourseForTrainee", "Staff", new { Id = Model.Id, courseId = item.Id }, new { @class = "btn btn-info" })
+	</td>
+</tr>}
+			}
+	</tbody>
+</table>
