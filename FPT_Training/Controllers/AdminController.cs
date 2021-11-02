@@ -106,13 +106,6 @@ namespace FPT_Training.Controllers
             return RedirectToAction("TrainerIndex");
         }
 
-        public ActionResult DeleteUser(string Id)
-        {
-            var user = UserManager.FindById(Id);
-            UserManager.Delete(user);
-            return RedirectToAction("TrainerIndex");
-        }
-
         public ActionResult StaffIndex()
         {
             var newView = _context.Users.OfType<TrainingStaff>().ToList();
@@ -176,6 +169,18 @@ namespace FPT_Training.Controllers
                 }
             }
             return RedirectToAction("TrainingStaffIndex");
+        }
+
+        public ActionResult DeleteUser(string Id)
+        {
+            var user = UserManager.FindById(Id);
+            if(user is Trainer)
+            {
+                UserManager.Delete(user);
+                return RedirectToAction("TrainerIndex");
+            }    
+            UserManager.Delete(user);
+            return RedirectToAction("StaffIndex");
         }
     }
 }
