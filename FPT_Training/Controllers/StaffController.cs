@@ -129,5 +129,32 @@ namespace FPT_Training.Controllers
       _context.SaveChanges();
       return RedirectToAction("TraineeIndex");
     }
+    public ActionResult ViewAssignCourseForTrainee(string Id)
+    {
+      var view = new AssignCourse
+      {
+        Id = Id,
+        courses = _context.Courses.ToList()
+      };
+      return View(view);
+    }
+
+    public ActionResult AssignCourseForTrainee(string Id, int courseId)
+    {
+      var course = _context.Courses.SingleOrDefault(m => m.Id == courseId);
+      var user = _context.Users.SingleOrDefault(m => m.Id == Id);
+      var check = _context.UsersCourses.SingleOrDefault(m => m.UserId == Id && m.CourseId == courseId);
+      if (check == null)
+      {
+        var data = new UserCourse
+        {
+          UserId = Id,
+          CourseId = courseId
+        };
+        _context.UsersCourses.Add(data);
+        _context.SaveChanges();
+      }
+      return RedirectToAction("TraineeIndex");
+    }
   }
 }
