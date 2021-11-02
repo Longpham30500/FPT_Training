@@ -44,7 +44,7 @@ namespace FPT_Training.Controllers
 			{
 				var isExisted = _context.Courses.SingleOrDefault(m => m.CourseName == courseCategories.course.CourseName);
 				if (isExisted != null)
-					return View();
+					return View(courseCategories);
 				var newCourse = new Course()
 				{
 					CourseName = courseCategories.course.CourseName,
