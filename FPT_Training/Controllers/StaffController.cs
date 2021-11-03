@@ -214,7 +214,7 @@ namespace FPT_Training.Controllers
                 _context.UsersCourses.Add(data);
                 _context.SaveChanges();
             }
-            return RedirectToAction("TraineeIndex");
+            return RedirectToAction("TrainerIndex");
         }
         
         public ActionResult RemoveCourseForTrainer(string Id, int courseId)
