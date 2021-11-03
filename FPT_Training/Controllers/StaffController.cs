@@ -183,7 +183,7 @@ namespace FPT_Training.Controllers
                 search = search.ToLower();
                 view = view.Where(m =>
                                 m.courses.Any(x => x.CourseName.ToLower().Contains(search))
-                                || m.user.UserName.ToLower().Contains(search)
+                                || m.user.FullName.ToLower().Contains(search)
                                 || m.user.Age.ToString().Contains(search));
             }
             return View(view.ToList());
