@@ -7,7 +7,7 @@ namespace FPT_Training.Models
 	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("fpt-training", throwIfV1Schema: false)
         {
         }
 
