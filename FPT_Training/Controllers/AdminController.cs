@@ -61,6 +61,11 @@ namespace FPT_Training.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    _context.UsersCourses.Add(new UserCourse
+                    {
+                        CourseId = _context.Courses.SingleOrDefault(m => m.CourseName == "Not Exist").Id,
+                        UserId = user.Id
+                    });
                     await UserManager.AddToRoleAsync(user.Id, Role.Trainer);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("TrainerIndex");
