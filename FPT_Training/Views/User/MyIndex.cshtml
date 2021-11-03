@@ -1,0 +1,40 @@
+﻿@model FPT_Training.ViewModels.UserCoursesModel
+@{
+    ViewBag.Title = "My Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped" title="List Course assigned for me">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">View List User Assigned this Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.courses.Count() == 1)
+        {
+            <tr>
+                <td>@Model.courses[0].CourseName</td>
+                <td>@Model.courses[0].Description</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var course in Model.courses)
+            {
+                if (course.CourseName != "Not Exist")
+                {
+                    <tr>
+                        <td>@course.CourseName</td>
+                        <td>@course.Description</td>
+                        <td>@Html.ActionLink("View List User", "ListUsersAssignedThisCourse", "User", new { CourseId = course.Id }, new { @class = "btn btn-info" })</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

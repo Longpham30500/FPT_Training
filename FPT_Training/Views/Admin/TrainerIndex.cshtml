@@ -11,7 +11,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Name</th>
+            <th scope="col">FullName</th>
             <th scope="col">Specialty</th>
             <th scope="col">Manage</th>
         </tr>
@@ -20,7 +20,7 @@
         @foreach (var item in @Model)
         {
             <tr>
-                <td>@item.UserName</td>
+                <td>@item.FullName</td>
                 <td>@item.Specialty</td>
                 <td>
                     @Html.ActionLink("Update Trainer", "UpdateTrainer", "Admin", new { Id = item.Id }, new { @class = "btn btn-warning" })

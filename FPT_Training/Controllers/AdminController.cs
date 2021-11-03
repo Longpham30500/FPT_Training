@@ -50,7 +50,8 @@ namespace FPT_Training.Controllers
             {
                 var user = new Trainer
                 {
-                    UserName = model.FullName,
+                    FullName = model.FullName,
+                    UserName = model.Email,
                     Email = model.Email,
                     Age = model.Age,
                     Address = model.Address,
@@ -90,7 +91,7 @@ namespace FPT_Training.Controllers
                 var editUser = _context.Users.OfType<Trainer>().SingleOrDefault(m => m.Id == user.Id);
                 if (editUser != null)
                 {
-                    editUser.UserName = user.UserName;
+                    editUser.FullName = user.FullName;
                     editUser.Email = user.Email;
                     editUser.Age = user.Age;
                     editUser.Address = user.Address;
@@ -124,7 +125,8 @@ namespace FPT_Training.Controllers
             {
                 var user = new TrainingStaff
                 {
-                    UserName = model.FullName,
+                    FullName = model.FullName,
+                    UserName = model.Email,
                     Email = model.Email,
                     Age = model.Age,
                     Address = model.Address,
@@ -156,7 +158,7 @@ namespace FPT_Training.Controllers
                 var editUser = _context.Users.OfType<TrainingStaff>().SingleOrDefault(m => m.Id == user.Id);
                 if (editUser != null)
                 {
-                    editUser.UserName = user.UserName;
+                    editUser.FullName = user.FullName;
                     editUser.Email = user.Email;
                     editUser.Age = user.Age;
                     editUser.Address = user.Address;

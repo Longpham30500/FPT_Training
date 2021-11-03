@@ -32,7 +32,7 @@
         @foreach (var item in @Model)
         {
             <tr>
-                <td>@item.user.UserName</td>
+                <td>@item.user.FullName</td>
                 <td>@item.user.Age</td>
                 <td>
                     @if (item.courses.Count() == 1)

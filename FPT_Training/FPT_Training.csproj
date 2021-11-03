@@ -174,6 +174,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +205,14 @@
     <Compile Include="Migrations\202111020934474_CreateTableTrainingStaffThroughApplicationUser.cs" />
     <Compile Include="Migrations\202111020934474_CreateTableTrainingStaffThroughApplicationUser.Designer.cs">
       <DependentUpon>202111020934474_CreateTableTrainingStaffThroughApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111030255211_addFullNamePropertyForApplicationUser.cs" />
+    <Compile Include="Migrations\202111030255211_addFullNamePropertyForApplicationUser.Designer.cs">
+      <DependentUpon>202111030255211_addFullNamePropertyForApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111030318539_addCheckingForApplicationUserProperties.cs" />
+    <Compile Include="Migrations\202111030318539_addCheckingForApplicationUserProperties.Designer.cs">
+      <DependentUpon>202111030318539_addCheckingForApplicationUserProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -295,6 +304,7 @@
     <Content Include="Views\Admin\StaffIndex.cshtml" />
     <Content Include="Views\Admin\CreateStaff.cshtml" />
     <Content Include="Views\Admin\UpdateStaff.cshtml" />
+    <Content Include="Views\User\MyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,6 +343,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111020934474_CreateTableTrainingStaffThroughApplicationUser.resx">
       <DependentUpon>202111020934474_CreateTableTrainingStaffThroughApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111030255211_addFullNamePropertyForApplicationUser.resx">
+      <DependentUpon>202111030255211_addFullNamePropertyForApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111030318539_addCheckingForApplicationUserProperties.resx">
+      <DependentUpon>202111030318539_addCheckingForApplicationUserProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
