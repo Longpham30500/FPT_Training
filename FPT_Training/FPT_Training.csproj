@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202111030318539_addCheckingForApplicationUserProperties.Designer.cs">
       <DependentUpon>202111030318539_addCheckingForApplicationUserProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111030742516_UpdateTableApplicationUser.cs" />
+    <Compile Include="Migrations\202111030742516_UpdateTableApplicationUser.Designer.cs">
+      <DependentUpon>202111030742516_UpdateTableApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -350,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111030318539_addCheckingForApplicationUserProperties.resx">
       <DependentUpon>202111030318539_addCheckingForApplicationUserProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111030742516_UpdateTableApplicationUser.resx">
+      <DependentUpon>202111030742516_UpdateTableApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
