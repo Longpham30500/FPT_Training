@@ -1,10 +1,10 @@
 ﻿@model FPT_Training.Models.Trainer
 @{
-    ViewBag.Title = "UpdateTrainer";
+    ViewBag.Title = "Update Trainer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UpdateTrainer</h2>
+<h2>Update Trainer</h2>
 @using (Html.BeginForm("UpdateTrainer", "Admin", FormMethod.Post))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
