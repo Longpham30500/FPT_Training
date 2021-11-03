@@ -31,6 +31,8 @@
                         else if (User.IsInRole(Role.Trainer))
                         {
                             <li>@Html.ActionLink("My Profile", "MyIndex", "User")</li>
+                            <li>@Html.ActionLink("Update My Information", "UpdateTrainer", "Admin")</li>
+
                         }
                         else if (User.IsInRole(Role.TrainingStaff))
                         {
