@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FPT_Training.Controllers
 {
+    [Authorize(Roles = Role.Admin)]
     public class AdminController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
@@ -77,12 +78,20 @@ namespace FPT_Training.Controllers
             }
         }
 
-        public ActionResult UpdateTrainer(string Id)
+        [OverrideAuthorization]
+        [Authorize(Roles = Role.Trainer + "," + Role.Admin)]
+        public ActionResult UpdateTrainer(string Id = null)
         {
+            if (Id == null)
+            {
+                Id = User.Identity.GetUserId();
+            }
             var userSelected = UserManager.FindById(Id);
             return View(userSelected);
         }
 
+        [OverrideAuthorization]
+        [Authorize(Roles = Role.Trainer + "," + Role.Admin)]
         [HttpPost]
         public ActionResult UpdateTrainer(Trainer user, string newPassword)
         {
