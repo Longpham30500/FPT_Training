@@ -46,7 +46,7 @@
                                 if (course.CourseName != "Not Exist")
                                 {
                                     <li>@course.CourseName</li>
-                                    @Html.ActionLink("Remove Courses", "RemoveCourseForTrainee", "Staff", new { Id = item.user.Id, courseId = course.Id }, new { @class = "btn btn-success" })}
+                                    @Html.ActionLink("Remove Courses", "RemoveCourseForTrainee", "Staff", new { Id = item.user.Id, courseId = course.Id }, new { @class = "btn btn-warning" })}
                             }
                         </ul>}
                 </td>

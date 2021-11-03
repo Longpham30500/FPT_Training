@@ -43,5 +43,13 @@ namespace FPT_Training.Controllers
             };
             return View(newView);
         }
+
+        public ActionResult ListTraineesAssignedThisCourse(int CourseId)
+        {
+            var newView = _context.UsersCourses
+                .Where(m => m.CourseId == CourseId)
+                .Select(m => m.User).ToList();
+            return View(newView);
+        }
     }
 }

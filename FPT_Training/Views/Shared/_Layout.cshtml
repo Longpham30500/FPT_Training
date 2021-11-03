@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using FPT_Training.Utils
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,9 +22,29 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole(Role.Trainee))
+                        {
+                            <li>@Html.ActionLink("My Profile", "MyIndex", "User")</li>
+                        }
+                        else if (User.IsInRole(Role.Trainer))
+                        {
+                            <li>@Html.ActionLink("My Profile", "MyIndex", "User")</li>
+                        }
+                        else if (User.IsInRole(Role.TrainingStaff))
+                        {
+                            <li>@Html.ActionLink("Manage Trainee", "TraineeIndex", "Staff")</li>
+                            <li>@Html.ActionLink("Manage Trainer", "TrainerIndex", "Staff")</li>
+                            <li>@Html.ActionLink("Manage Category", "Index", "Category")</li>
+                            <li>@Html.ActionLink("Manage Course", "Index", "Course"),</li>
+                        }
+                        else if (User.IsInRole(Role.Admin))
+                        {
+                            <li>@Html.ActionLink("Manage Trainer", "TrainerIndex", "Admin")</li>
+                            <li>@Html.ActionLink("Manage Training Staff", "StaffIndex", "Admin")</li>
+                        }
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

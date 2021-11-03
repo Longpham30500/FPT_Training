@@ -1,0 +1,26 @@
+﻿@model List<FPT_Training.Models.ApplicationUser>
+@{
+    ViewBag.Title = "ListTraineesAssignedThisCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListTraineesAssignedThisCourse</h2>
+
+
+<table class="table table-striped" title="List Trainees">
+    <thead>
+        <tr>
+            <th scope="col">FullName</th>
+            <th scope="col">Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.Age</td>
+            </tr>
+        }
+    </tbody>
+</table>

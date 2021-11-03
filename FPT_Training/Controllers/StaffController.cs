@@ -49,7 +49,7 @@ namespace FPT_Training.Controllers
                 search = search.ToLower();
                 view = view.Where(m =>
                                 m.courses.Any(x => x.CourseName.ToLower().Contains(search))
-                                || m.user.UserName.ToLower().Contains(search)
+                                || m.user.FullName.ToLower().Contains(search)
                                 || m.user.Age.ToString().Contains(search));
             }
             return View(view.ToList());
@@ -67,7 +67,8 @@ namespace FPT_Training.Controllers
             {
                 var user = new Trainee
                 {
-                    UserName = model.FullName,
+                    FullName = model.FullName,
+                    UserName = model.Email,
                     Email = model.Email,
                     Age = model.Age,
                     Address = model.Address,
@@ -112,7 +113,7 @@ namespace FPT_Training.Controllers
                 var editUser = _context.Users.OfType<Trainee>().SingleOrDefault(m => m.Id == user.Id);
                 if (editUser != null)
                 {
-                    editUser.UserName = user.UserName;
+                    editUser.FullName = user.FullName;
                     editUser.Email = user.Email;
                     editUser.Age = user.Age;
                     editUser.Address = user.Address;
