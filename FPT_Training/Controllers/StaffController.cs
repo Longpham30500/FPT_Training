@@ -215,5 +215,13 @@ namespace FPT_Training.Controllers
             }
             return RedirectToAction("TraineeIndex");
         }
+        
+        public ActionResult RemoveCourseForTrainer(string Id, int courseId)
+        {
+            var data = _context.UsersCourses.SingleOrDefault(m => m.CourseId == courseId && m.UserId == Id);
+            _context.UsersCourses.Remove(data);
+            _context.SaveChanges();
+            return RedirectToAction("TrainerIndex");
+        }
     }
 }
