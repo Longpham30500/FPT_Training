@@ -20,7 +20,7 @@ namespace FPT_Training.Models
 
 		[Required(ErrorMessage = "don't leave it blank")]
 		[RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$",
-		ErrorMessage = "special characters are not allowed.")]
+ ErrorMessage = "special characters are not allowed.")]
 		public string FullName { get; set; }
 
 		[Required(ErrorMessage = "don't leave it blank")]
