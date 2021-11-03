@@ -51,5 +51,12 @@ namespace FPT_Training.Controllers
                 .Select(m => m.User).ToList();
             return View(newView);
         }
+
+        public ActionResult MyProfile()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+            return View(user);
+        }
     }
 }

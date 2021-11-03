@@ -223,5 +223,7 @@ namespace FPT_Training.Controllers
             _context.SaveChanges();
             return RedirectToAction("TrainerIndex");
         }
+
+
     }
 }

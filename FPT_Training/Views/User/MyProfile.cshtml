@@ -1,0 +1,12 @@
+﻿@model FPT_Training.Models.Trainee
+@{ ViewBag.Title = "My Information";
+				Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="panel panel-info">
+	<div class="panel-heading">FullName: @Model.FullName </div>
+	<div class="panel-body">
+		<p>Age: @Model.Age</p>
+		<p>Address: @Model.Address</p>
+		<p>Education: @Model.Education</p>
+	</div>
+</div>
