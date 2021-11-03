@@ -1,4 +1,5 @@
 ﻿using FPT_Training.Models;
+using FPT_Training.Utils;
 using FPT_Training.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FPT_Training.Controllers
 {
+    [Authorize(Roles = Role.Trainer +","+Role.Trainee)]
     public class UserController : Controller
     {
         private ApplicationDbContext _context;
@@ -51,7 +53,9 @@ namespace FPT_Training.Controllers
                 .Select(m => m.User).ToList();
             return View(newView);
         }
-
+        
+        [OverrideAuthorization]
+        [Authorize(Roles = Role.Trainee)]
         public ActionResult MyProfile()
         {
             var userId = User.Identity.GetUserId();

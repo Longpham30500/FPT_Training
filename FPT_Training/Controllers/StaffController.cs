@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace FPT_Training.Controllers
 {
+    [Authorize(Roles = Role.TrainingStaff)]
     public class StaffController : Controller
     {
         private ApplicationDbContext _context;

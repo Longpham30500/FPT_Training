@@ -1,4 +1,5 @@
 ﻿using FPT_Training.Models;
+using FPT_Training.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace FPT_Training.Controllers
 {
+    [Authorize(Roles = Role.TrainingStaff)]
     public class CategoryController : Controller
     {
         // GET: Category

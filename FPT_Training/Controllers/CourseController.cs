@@ -1,4 +1,5 @@
 ﻿using FPT_Training.Models;
+using FPT_Training.Utils;
 using FPT_Training.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace FPT_Training.Controllers
 {
+	[Authorize(Roles = Role.TrainingStaff)]
 	public class CourseController : Controller
 	{
 		// GET: Course
