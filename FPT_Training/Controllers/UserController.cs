@@ -50,7 +50,7 @@ namespace FPT_Training.Controllers
         {
             var newView = _context.UsersCourses
                 .Where(m => m.CourseId == CourseId)
-                .Select(m => (m.User is Trainee)).ToList();
+                .Select(m => m.User).OfType<Trainee>().ToList();
             return View(newView);
         }
         
