@@ -118,7 +118,7 @@ namespace FPT_Training.Controllers
                     _context.SaveChanges();
                 }
             }
-            if (User.IsInRole(Role.Trainer)) return RedirectToAction("MyProfile", "User");
+            if (User.IsInRole(Role.Trainer)) return RedirectToAction("Myindex", "User");
             return RedirectToAction("TrainerIndex");
         }
 
