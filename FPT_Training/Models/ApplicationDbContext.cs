@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace FPT_Training.Models
 {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("fpt-training", throwIfV1Schema: false)
